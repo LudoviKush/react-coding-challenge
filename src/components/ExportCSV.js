@@ -2,12 +2,8 @@ import { CSVLink, CSVDownload } from "react-csv";
 import { connect } from 'react-redux';
 import React from 'react'
 import { Button } from 'reactstrap';
-import store from '../store'
 
 function ExportCSV(props) {
-
-console.log(props.posts.length, 'ok')
-console.log(store.getState())
 
   return (
     <div>
@@ -21,7 +17,8 @@ const mapStateToProps = (state) => {
   return {
     posts: state.PostReducers.posts,
     page: state.PostReducers.page,
-    searchResults: state.PostReducers.searchResults
+    searchResults: state.PostReducers.searchResults,
+    countrySelected: state.PostReducers.countrySelected
     }
   }
 

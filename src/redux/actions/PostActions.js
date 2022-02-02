@@ -1,12 +1,14 @@
 import * as actions from "../constants/PostConstants";
 import axios from "axios";
 
+const api_endpoint = process.env.REACT_APP_COUNTRIES_ENDPOINT
+
 export const fetchPosts = () => async (dispatch) => {
   dispatch({ type: actions.FETCH_POST_REQUEST });
 
   try {
     const data = await axios.get(
-      "https://countriesnow.space/api/v0.1/countries/positions"
+      api_endpoint
     );
     dispatch({ type: actions.FETCH_POST_SUCCESS, payload: data });
   } catch (error) {
@@ -27,7 +29,7 @@ export const sortPostsDesc = () => (dispatch, getState) => {
 
 export const searchPosts = (query) => (dispatch, getState) => {
   const { PostReducers } = getState();
-  console.log(PostReducers.searchResults, "postReducers");
+  //console.log(PostReducers.searchResults, "postReducers");
   if (PostReducers.searchResults.length !== 0) {
     // temp fix for 0 at first
     const searchResults = PostReducers.searchResults.data.filter((post) =>

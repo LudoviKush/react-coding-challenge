@@ -15,7 +15,7 @@ import {
 } from "reactstrap";
 import ExportCSV from "./ExportCSV";
 
-const Posts = () => {
+const Countries = () => {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   const { posts, loading } = useSelector((state) => state.PostReducers);
@@ -52,7 +52,7 @@ const Posts = () => {
   return (
     <div className="center-mid">
       <Header search={search} onChange={handleChangeSearch} />
-      <Row xl>
+      <Row>
         <Col>
           <Dropdown isOpen={dropdownOpen} toggle={toggleDropDown}>
             <DropdownToggle caret>Items per page</DropdownToggle>
@@ -91,4 +91,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default Countries;

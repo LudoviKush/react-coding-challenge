@@ -1,9 +1,12 @@
 import './App.css';
-import Posts from './components/Posts';
+import Countries from './components/Countries';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Favorites from './components/Favorites';
+import Cities from './components/Cities';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import {NavItem, NavLink, Nav} from 'reactstrap'
+
+require('dotenv').config()
 
 function App() {
 	return (
@@ -33,9 +36,9 @@ function App() {
     </NavItem>
 	</Nav>
 	<Routes>
-			<Route path='/' element={<Posts />} />
-			{/* <Route path='/favorites' element={<Favorites />} /> */}
-			{/* <Route path='/cities' element={<Cities />} /> */}
+			<Route path='/' element={<Countries />} />
+			<Route path='/favorites' element={<Favorites />} />
+			 <Route path='/cities' element={<Cities />} />
 	</Routes>
 		</div>
 		</Router>

@@ -93,14 +93,6 @@ header .filters input::placeholder {
 	}
 }
 
-.center {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	color: white;
-  }
-
   .center-mid {
 	margin-top: 40px;
 	display: flex;
@@ -109,3 +101,9 @@ header .filters input::placeholder {
 	justify-content: center;
 	color: white;
   }
+
+  .center-list{
+	text-align: center;
+	display: inline-block;
+	padding-left: 43.3333333%
+	}

@@ -4,6 +4,7 @@ const initialState = {
 	posts: [],
 	searchResults: [],
 	page: 1,
+	country: 'none'
 };
 
 export const PostReducers = (state = initialState, action) => {
