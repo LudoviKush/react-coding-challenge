@@ -4,7 +4,7 @@ import {
   sortPostsAsc,
   sortPostsDesc,
   searchPosts,
-} from "../redux/actions/PostActions";
+} from "../../redux/actions/PostActions";
 
 const Header = ({ search, onChange }) => {
   const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import Header from "./Header";
 import PostCard from "./PostCard";
 import Loader from "./Loader";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts } from "../redux/actions/PostActions";
+import { fetchPosts } from "../../redux/actions/PostActions";
 import Paginate from "./Paginate";
 import {
   Dropdown,

@@ -1,8 +1,8 @@
 import './App.css';
-import Countries from './components/Countries';
+import Countries from './components/Countries/Countries';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Favorites from './components/Favorites';
-import Cities from './components/Cities';
+import Favorites from './components/Cities/Favorites';
+import Cities from './components/Cities/Cities';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import {NavItem, NavLink, Nav} from 'reactstrap'
 
@@ -38,7 +38,9 @@ function App() {
 	<Routes>
 			<Route path='/' element={<Countries />} />
 			<Route path='/favorites' element={<Favorites />} />
-			 <Route path='/cities' element={<Cities />} />
+			<Route path='/cities'>
+        <Route path=':id' element={<Cities />} />
+      </Route>
 	</Routes>
 		</div>
 		</Router>

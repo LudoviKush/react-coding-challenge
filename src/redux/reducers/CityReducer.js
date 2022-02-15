@@ -1,45 +1,45 @@
-import * as actions from '../constants/PostConstants';
+import * as actions from '../constants/CityConstants';
 
 const initialState = {
-	posts: [],
+	cities: [],
 	searchResults: [],
 	page: 1,
-	country: ''
+	city: ''
 };
 
-export const PostReducers = (state = initialState, action) => {
+export const CityReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case actions.FETCH_POST_REQUEST:
+		case actions.FETCH_COUNTRY_REQUEST:
 			return {
 				...state,
 				loading: true,
 			};
-		case actions.FETCH_POST_SUCCESS:
+		case actions.FETCH_COUNTRY_SUCCESS:
 			return {
 				...state,
 				loading: false,
 				posts: action.payload.data.data, // single data
 				searchResults: action.payload.data,
 			};
-		case actions.FETCH_POST_FAILED:
+		case actions.FETCH_COUNTRY_FAILED:
 			return {
 				...state,
 				loading: false,
 				error: action.payload,
 			};
-		case actions.SORT_POSTS_ASC:
+		case actions.SORT_CITY_ASC:
 			const sortAsc = action.payload.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
 			return {
 				...state,
 				posts: sortAsc,
 			};
-		case actions.SORT_POSTS_DESC:
+		case actions.SORT_CITY_DESC:
 			const sortDesc = action.payload.sort((a, b) => (a.name < b.name ? 1 : a.name > b.name ? -1 : 0));
 			return {
 				...state,
 				posts: sortDesc,
 			};
-		case actions.SEARCH_POSTS:
+		case actions.SEARCH_CITY:
 			return {
 				...state,
 				posts: action.payload,

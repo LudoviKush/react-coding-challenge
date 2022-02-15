@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const PostCard = ({ post }) => {
-  const [country, setCountry] = useState('');
-  let redirect = useNavigate();
+  let history = useNavigate();
 
   const handleClick = () => {
-    // clicked post(Country) should be passed to Cities component
 
-    if (country.name === undefined) { // instead of this how should be handled ?
-	  setCountry(post)
-	  console.log(post, 'country')
-      redirect("/cities", {select: country}); //and here redirect to Country view (Cities)
-    }
+    const selCountry = post.name
+    console.log(selCountry, 'selected')
+	  //history('/cities/' + {selCountry});
+    history('/cities/'+selCountry);
+
   };
 
   return (
@@ -29,8 +27,8 @@ const mapStateToProps = (state) => {
     posts: state.PostReducers.posts,
     page: state.PostReducers.page,
     searchResults: state.PostReducers.searchResults,
-    country: state.PostReducers.country,
-  };
-};
+    country: state.PostReducers.country
+    }
+  }
 
 export default connect(mapStateToProps)(PostCard);
