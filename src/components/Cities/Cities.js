@@ -7,18 +7,17 @@ function Cities() {
   const [cities, setCities] = useState([]);
   const location = useLocation();
 
-  country = location.pathname.split("/").pop();
+  country = decodeURI(location.pathname.split("/").pop());       // Removing the unneeded path
 
   useEffect(() => {
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ country }),
+        body: JSON.stringify({ country }),  
       };
       fetch(api_endpoint, requestOptions)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setCities(data.data);
         });
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -8,8 +8,7 @@ const PostCard = ({ post }) => {
   const handleClick = () => {
 
     const selCountry = post.name
-    console.log(selCountry, 'selected')
-	  //history('/cities/' + {selCountry});
+  
     history('/cities/'+selCountry);
 
   };
