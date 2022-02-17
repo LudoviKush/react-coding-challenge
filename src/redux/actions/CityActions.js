@@ -1,21 +1,4 @@
 import * as actions from "../constants/CityConstants";
-import axios from "axios";
-
-const api_endpoint = process.env.REACT_APP_CITIES_ENDPOINT
-
-export const fetchCountry = () => async (dispatch) => {
-  dispatch({ type: actions.FETCH_COUNTRY_REQUEST });
-
-  try {
-    const data = await axios.get(
-      api_endpoint
-    );
-    dispatch({ type: actions.FETCH_COUNTRY_SUCCESS, payload: data });
-  } catch (error) {
-    dispatch({ type: actions.FETCH_COUNTRY_FAILED, payload: error.message });
-    console.log(error.message);
-  }
-};
 
 export const sortCitiesAsc = () => (dispatch, getState) => {
   const { PostReducers } = getState();
