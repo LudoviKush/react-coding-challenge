@@ -15,10 +15,10 @@ function ExportCSV(props) {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.PostReducers.posts,
-    page: state.PostReducers.page,
-    searchResults: state.PostReducers.searchResults,
-    countrySelected: state.PostReducers.countrySelected
+    posts: state.PostReducer.posts,
+    page: state.PostReducer.page,
+    searchResults: state.PostReducer.searchResults,
+    countrySelected: state.PostReducer.countrySelected
     }
   }
 

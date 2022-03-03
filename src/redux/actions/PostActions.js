@@ -18,21 +18,21 @@ export const fetchPosts = () => async (dispatch) => {
 };
 
 export const sortPostsAsc = () => (dispatch, getState) => {
-  const { PostReducers } = getState();
-  dispatch({ type: actions.SORT_POSTS_ASC, payload: PostReducers.posts });
+  const { PostReducer } = getState();
+  dispatch({ type: actions.SORT_POSTS_ASC, payload: PostReducer.posts });
 };
 
 export const sortPostsDesc = () => (dispatch, getState) => {
-  const { PostReducers } = getState();
-  dispatch({ type: actions.SORT_POSTS_DESC, payload: PostReducers.posts });
+  const { PostReducer } = getState();
+  dispatch({ type: actions.SORT_POSTS_DESC, payload: PostReducer.posts });
 };
 
 export const searchPosts = (query) => (dispatch, getState) => {
-  const { PostReducers } = getState();
-  //console.log(PostReducers.searchResults, "postReducers");
-  if (PostReducers.searchResults.length !== 0) {
+  const { PostReducer } = getState();
+  //console.log(PostReducer.searchResults, "PostReducer");
+  if (PostReducer.searchResults.length !== 0) {
     // temp fix for 0 at first
-    const searchResults = PostReducers.searchResults.data.filter((post) =>
+    const searchResults = PostReducer.searchResults.data.filter((post) =>
       post.name.toLowerCase().includes(query.toLowerCase())
     );
     dispatch({ type: actions.SEARCH_POSTS, payload: searchResults });

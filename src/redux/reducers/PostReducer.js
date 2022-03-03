@@ -7,7 +7,7 @@ const initialState = {
 	country: ''
 };
 
-export const PostReducers = (state = initialState, action) => {
+export const PostReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case actions.FETCH_POST_REQUEST:
 			return {

@@ -6,23 +6,23 @@ import {
   DropdownMenu,
   DropdownItem,
   Row,
-  Col
+  Col,
 } from "reactstrap";
-import Header from '../Countries/Header'
-import Paginate from '../Countries/Paginate'
-import PostCard from '../Cities/PostCard'
+import Header from "../Countries/Header";
+import Paginate from "../Countries/Paginate";
 
 function Cities() {
   const api_endpoint = process.env.REACT_APP_CITIES_ENDPOINT;
   var [country] = useState("Romania");
-  const [cities, setCities] = useState([]);
+  const [cities, setCities] = useState([]); 
   const location = useLocation();
-  country = decodeURI(location.pathname.split("/").pop());    // Removing the unneeded path
+  country = decodeURI(location.pathname.split("/").pop()); // Removing the unneeded path
+  var [selCities] = useState([])
 
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [dropdownOpen, setDropdownOpen] = useState(false); //dropdown handler
-  const [postsPerPage, setPostsPerPage] = useState(10); //number post per page
+  const [postsPerPage, setPostsPerPage] = useState(50); //number post per page
   const totalPosts = cities.length;
 
   const handleChangeSearch = (e) => {
@@ -45,18 +45,24 @@ function Cities() {
   };
 
   useEffect(() => {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ country }),  
-      };
-      fetch(api_endpoint, requestOptions)
-        .then((res) => res.json())
-        .then((data) => {
-          setCities(data.data);
-        });
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ country }),
+    };
+    fetch(api_endpoint, requestOptions)
+      .then((res) => res.json())
+      .then((data) => {
+        setCities(data.data);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const selector = (city) => {
+    console.log("You have selected " + city)
+    //selCities.push(city)
+    //console.log(selCities)
+  }
 
   return (
     <div className="center-list">
@@ -73,23 +79,27 @@ function Cities() {
             </DropdownMenu>
           </Dropdown>
         </Col>
-        </Row>
+      </Row>
       <h2>Cities of {country}</h2>
       {/* {cities.map((city) => (
         <li key={city}> {city} </li>
       ))} */}
       {filterPosts.map((city) => (
-             // <PostCard key={city}/>
-             <li key={city}> {city} </li>
-            ))}
+        // <PostCard key={city}/>
+        //<li key={city} onClick={() => console.log(city)}>
+        <li key={city} onClick={() => selector(city)}>
+          {" "}
+          {city}{" "}
+        </li>
+      ))}
       {totalPosts > postsPerPage && (
-            <Paginate
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              totalPosts={totalPosts}
-              postPerPage={postsPerPage}
-            />
-          )}
+        <Paginate
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPosts={totalPosts}
+          postPerPage={postsPerPage}
+        />
+      )}
     </div>
   );
 }

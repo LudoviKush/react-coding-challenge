@@ -18,7 +18,7 @@ import ExportCSV from "./ExportCSV";
 const Countries = () => {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
-  const { posts, loading } = useSelector((state) => state.PostReducers);
+  const { posts, loading } = useSelector((state) => state.PostReducer);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10); //number post per page
   const [dropdownOpen, setDropdownOpen] = useState(false); //dropdown handler

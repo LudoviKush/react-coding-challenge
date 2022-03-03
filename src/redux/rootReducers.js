@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import { PostReducers } from './reducers/PostReducers';
+import { PostReducer } from './reducers/PostReducer';
 import { CityReducer } from './reducers/CityReducer';
 
 const rootReducers = combineReducers({
-	PostReducers,
+	PostReducer,
 	CityReducer
 });
 

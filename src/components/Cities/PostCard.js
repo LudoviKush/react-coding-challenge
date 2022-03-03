@@ -17,10 +17,10 @@ const PostCard = ({ city }) => {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.PostReducers.posts,
-    page: state.PostReducers.page,
-    searchResults: state.PostReducers.searchResults,
-    country: state.PostReducers.country
+    posts: state.PostReducer.posts,
+    page: state.PostReducer.page,
+    searchResults: state.PostReducer.searchResults,
+    country: state.PostReducer.country
     }
   }
 
